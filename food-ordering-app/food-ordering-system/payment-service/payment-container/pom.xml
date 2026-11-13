@@ -59,12 +59,22 @@
                 </configuration>
 
                 <executions>
+
+                    <!-- Disable inherited repackage execution -->
                     <execution>
+                        <id>repackage</id>
+                        <phase>none</phase>
+                    </execution>
+
+                    <!-- Keep Docker Buildpacks image creation enabled -->
+                    <execution>
+                        <id>build-docker-image</id>
                         <phase>install</phase>
                         <goals>
                             <goal>build-image</goal>
                         </goals>
                     </execution>
+
                 </executions>
 
             </plugin>
