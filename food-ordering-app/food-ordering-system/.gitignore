@@ -40,3 +40,5 @@ infrastructure/docker-compose/volumes/**/**
 # Additional generated files
 .DS_Store
 Thumbs.db
+
+/infrastructure/docker-compose/.env
