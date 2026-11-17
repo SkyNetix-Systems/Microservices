@@ -31,7 +31,7 @@
 
     <!-- Properties -->
     <properties>
-        <java.version>25</java.version>
+        <java.version>17</java.version>
 
         <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
 
@@ -39,6 +39,8 @@
 
         <kafka-avro-serializer.version>7.0.1</kafka-avro-serializer.version>
         <avro.version>1.11.0</avro.version>
+
+        <depgraph-maven-plugin.version>4.0.5</depgraph-maven-plugin.version>
     </properties>
 
     <!-- Dependency Management -->
@@ -220,6 +222,7 @@
     <!-- Common Dependencies -->
     <dependencies>
 
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -227,6 +230,7 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Spring Logging -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
@@ -247,6 +251,7 @@
                 <configuration>
                     <release>${java.version}</release>
 
+                    <!-- Lombok Annotation Processor -->
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
@@ -254,7 +259,15 @@
                             <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
+
                 </configuration>
+            </plugin>
+
+            <!-- Maven Dependency Graph Plugin -->
+            <plugin>
+                <groupId>com.github.ferstl</groupId>
+                <artifactId>depgraph-maven-plugin</artifactId>
+                <version>${depgraph-maven-plugin.version}</version>
             </plugin>
 
         </plugins>
